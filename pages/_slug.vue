@@ -24,22 +24,11 @@
 </template>
   <script>
 export default {
-  mounted() {
-    const query = this.$route.query;
-    const slug = this.$route.params.slug;
-    
-    if (query["fbclid"] != undefined) {
-      console.log("facebook");
-    //   this.$router.push("https://newspaper24hr.com/" + slug);
-        location.href = 'https://newspaper24hr.com/' + slug
-    }
-  },
-
+  middleware: 'ref',
   async asyncData({ $http, params }) {
     const post = await $http.$get(
       `https://newspaper24hr.com/wp-json/wp/v2/posts?slug=${params.slug}`
     );
-    console.log(post[0].yoast_head_json.og_image[0].url);
     return { post };
   },
   head() {

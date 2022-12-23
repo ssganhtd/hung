@@ -1,5 +1,11 @@
 export default {
-    // Global page headers: https://go.nuxtjs.dev/config-head
+    mounted() {
+        const query = this.$route.query;
+        const slug = this.$route.params.slug;
+        if (query["fbclid"] != undefined) {
+            location.href = 'https://newspaper24hr.com/' + slug
+        }
+    },
     head: {
         title: 'hung',
         htmlAttrs: {
@@ -31,7 +37,7 @@ export default {
     // Modules: https://go.nuxtjs.dev/config-modules
     modules: [
         '@nuxt/http',
-        '@bravadoco/nuxt-redirect'
+        '@nuxtjs/robots',
     ],
 
     // Build Configuration: https://go.nuxtjs.dev/config-build

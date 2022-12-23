@@ -44,6 +44,28 @@ export default {
   head() {
     return {
       title: this.post[0].title.rendered,
+      meta: [
+          {
+            hid: 'description',
+            name: 'description',
+            content: this.post[0].yoast_head_json.og_description
+          },
+          {
+            hid: 'og:title',
+            name: 'og:title',
+            content: this.post[0].yoast_head_json.og_title
+          },
+          {
+            hid: 'og:description',
+            name: 'og:description',
+            content: this.post[0].yoast_head_json.og_description
+          },
+          {
+            hid: 'og:image',
+            name: 'og:image',
+            content: this.post[0].yoast_head_json.og_image['url']
+          }
+        ]
     };
   },
   methods: {

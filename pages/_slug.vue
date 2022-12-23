@@ -27,7 +27,7 @@ export default {
   mounted() {
     const query = this.$route.query;
     const slug = this.$route.params.slug;
-    console.log(slug);
+    
     if (query["fbclid"] != undefined) {
       console.log("facebook");
     //   this.$router.push("https://newspaper24hr.com/" + slug);
@@ -39,11 +39,34 @@ export default {
     const post = await $http.$get(
       `https://newspaper24hr.com/wp-json/wp/v2/posts?slug=${params.slug}`
     );
+    console.log(post[0].yoast_head_json.og_image[0].url);
     return { post };
   },
   head() {
     return {
       title: this.post[0].title.rendered,
+      meta: [
+          {
+            hid: 'description',
+            name: 'description',
+            content: this.post[0].yoast_head_json.og_description
+          },
+          {
+            hid: 'og:title',
+            name: 'og:title',
+            content: this.post[0].yoast_head_json.og_title
+          },
+          {
+            hid: 'og:description',
+            name: 'og:description',
+            content: this.post[0].yoast_head_json.og_description
+          },
+          {
+            hid: 'og:image',
+            name: 'og:image',
+            content: this.post[0].yoast_head_json.og_image[0].url
+          }
+        ]
     };
   },
   methods: {

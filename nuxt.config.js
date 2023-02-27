@@ -1,4 +1,5 @@
 export default {
+    mode: 'universal',
     head: {
         title: 'Website',
         htmlAttrs: {

@@ -27,7 +27,7 @@ export default {
   middleware: 'ref',
   async asyncData({ $http, params }) {
     const post = await $http.$get(
-      `https://newspaper24hr.com/wp-json/wp/v2/posts?slug=${params.slug}`
+      `https://congvangvietnam.com/wp-json/wp/v2/posts?slug=${params.slug}`
     );
     return { post };
   },

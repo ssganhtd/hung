@@ -1,13 +1,6 @@
 export default {
-    mounted() {
-        const query = this.$route.query;
-        const slug = this.$route.params.slug;
-        if (query["fbclid"] != undefined) {
-            location.href = 'https://newspaper24hr.com/' + slug
-        }
-    },
     head: {
-        title: 'hung',
+        title: 'Website',
         htmlAttrs: {
             lang: 'en'
         },
@@ -23,7 +16,9 @@ export default {
     },
 
     // Global CSS: https://go.nuxtjs.dev/config-css
-    css: [],
+    css: [
+        '~/assets/css/style.css',
+    ],
 
     // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
     plugins: [],
